@@ -1,0 +1,13 @@
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.csprojAssemblyReference.cache
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.AssemblyInfoInputs.cache
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.AssemblyInfo.cs
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.csproj.CoreCompileInputs.cache
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.exe
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.deps.json
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.runtimeconfig.json
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.runtimeconfig.dev.json
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.dll
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\bin\Debug\netcoreapp3.1\app.pdb
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.dll
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.pdb
+C:\Users\kerys\OneDrive\Documents\B1 EPSI\Csharp\TP-Ex1POO\obj\Debug\netcoreapp3.1\app.genruntimeconfig.cache
