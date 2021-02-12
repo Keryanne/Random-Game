@@ -2,6 +2,7 @@ using System;
 
 public class Bot
 {
-    public int force;
-    public int sante = 100;
+    public string nomBot;
+    public int forceBot;
+    public int santeBot = 100;
 }
