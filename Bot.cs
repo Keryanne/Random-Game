@@ -3,5 +3,5 @@ using System;
 public class Bot
 {
     public int force;
-    public int sante;
+    public int sante = 100;
 }

@@ -10,17 +10,16 @@ public class Application
 		String pseudo = Utilisateur.saisirTexte();
 
 		bot.force = 1;
-		bot.sante = 100;
 		int nbTour = 1;
 
 		do
 		{
 			Console.WriteLine($"{pseudo}, appuyez sur 'Entrée' pour lancer les dés");
 			string entre = Utilisateur.saisirTexte();
-			int ptsNegatif = lancerDes(pseudo);
-			Console.WriteLine($"{pseudo} lance les dés... {ptsNegatif}");
-			Console.WriteLine($"{pseudo} assène un coup sur le bot avec une force de {ptsNegatif}");
-			bot.sante = bot.sante - ptsNegatif;
+			int hitStrength = lancerDes(pseudo);
+			Console.WriteLine($"{pseudo} lance les dés... {hitStrength}");
+			Console.WriteLine($"{pseudo} assène un coup sur le bot avec une force de {hitStrength}");
+			bot.sante = bot.sante - hitStrength;
 
 			if(bot.sante >= 0)
 			{
@@ -45,11 +44,8 @@ public class Application
 
 	int lancerDes(string nomJoueur)
 	{
-		Random random = new Random();
-		int de1 = random.Next(1,7);
-		int de2 = random.Next(1,7);
-		
-		int de = de1 + de2;
+		var random = new Random();
+		int de = random.Next(1,7) + random.Next(1,7);
 
 		Console.WriteLine($"{nomJoueur} a lancé les Dés et a obtenu {de}");
 		return de;
