@@ -3,8 +3,9 @@
 public class Application
 {
 
-		public static Player j1 = new Player();
-		public static Bot b1 = new Bot();
+	public static Player j1 = new Player();
+	public static Bot b1 = new Bot();
+	
 	public void fonctionPrincipale ()
 	{
 		//DEBUT de votre programme
