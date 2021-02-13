@@ -2,44 +2,50 @@
 
 public class Application
 {
+
+		public static Player j1 = new Player();
+		public static Bot b1 = new Bot();
 	public void fonctionPrincipale ()
 	{
 		//DEBUT de votre programme
-
-
-		do
-		{
-
-			if(TourPlayer() <= 0)
+			while(true)
 			{
-				Console.WriteLine("Le joueur a gagné la partie !");
-				break;
-			}
-			if(TourBot() <= 0)
-			{
-				Console.WriteLine("Le bot a gagné la partie !");
-				break;
+				if(tirageAuSort() == j1.pseudo)
+				{
+					Console.WriteLine(j1.pseudo+" joue");
+					if(TourPlayer())
+					{
+						break;
+					}
+				}
+				else
+				{
+					Console.WriteLine(b1.nomBot+" joue");
+					if(TourBot())
+					{
+						break;
+					}
+				}
 			}
 
-		}while(TourPlayer() >= 0 && TourBot() >= 0);
-				
-		
-		
 		//FIN de votre programme
 	}
 
 	//DECLAREZ VOS FONCTIONS EN DESSOUS DE CETTE LIGNE
 
-	void DonneeJoueur(Player j1)
+	string tirageAuSort()
 	{
-		j1.pseudo = "RomainG";
-		j1.forceJoueur = 1;
-	}
+		var random = new Random();
+		int choix = random.Next(1,3);
 
-	void DonneeBot(Bot bot)
-	{
-		bot.nomBot = "RomainJoyeux";
-		bot.forceBot = 1;
+		if(choix == 1)
+		{
+			return j1.pseudo;
+		}
+		else
+		{
+			return b1.nomBot;
+		}
 	}
 	int lancerDes(string nomJoueur)
 	{
@@ -50,35 +56,41 @@ public class Application
 		return de;
 	}
 
-	int TourPlayer()
+	bool TourPlayer()
 	{
-		Player j1 = new Player();
-		DonneeJoueur(j1);
 		Console.WriteLine($"{j1.pseudo}, appuyez sur 'Entrée' pour lancer les dés");
 		string entre = Utilisateur.saisirTexte();
 
 		int hitStrength = lancerDes(j1.pseudo);
 		Console.WriteLine($"{j1.pseudo} lance les dés... {hitStrength}");
 		Console.WriteLine($"{j1.pseudo} assène un coup sur le bot avec une force de {hitStrength}");
-		j1.santeJoueur = j1.santeJoueur - hitStrength;
+		b1.santeBot = b1.santeBot - hitStrength;
 		Console.WriteLine($"{j1.pseudo} - {j1.santeJoueur}");
+		Console.WriteLine($"{b1.nomBot} - {b1.santeBot}");
 
-		return j1.santeJoueur;
+		if(b1.santeBot <= 0)
+		{
+			Console.WriteLine(j1.pseudo+" a gagné");
+			return true;
+		}
+		return false;
 	}
 
-	int TourBot()
+	bool TourBot()
 	{
-		Bot b1 = new Bot();
-		DonneeBot(b1);
-
 		int hitStrength = lancerDes(b1.nomBot);
 		Console.WriteLine($"{b1.nomBot} lance les dés... {hitStrength}");
 		Console.WriteLine($"{b1.nomBot} assène un coup sur le joueur avec une force de {hitStrength}");
-		b1.santeBot = b1.santeBot - hitStrength;
-		Console.WriteLine($"{b1.nomBot} - {b1.santeBot}"
-		);
+		j1.santeJoueur = j1.santeJoueur - hitStrength;
+		Console.WriteLine($"{j1.pseudo} - {j1.santeJoueur}");
+		Console.WriteLine($"{b1.nomBot} - {b1.santeBot}");
 
-		return b1.santeBot;
+		if(j1.santeJoueur <= 0)
+		{
+			Console.WriteLine(b1.nomBot+" a gagné");
+			return true;
+		}
+		return false;
 	}
 
 	/* EXEMPLES DE PROCEDURES ET FONCTIONS :
