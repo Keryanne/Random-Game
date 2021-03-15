@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "umZAiAhJPWUlFh2TKZ2X/OBefB1IrDQbaoTIYplPuz+S5uH/+aMcWsb4u1qvYfNqUzWjxXCP2+DoEARp/ggIIA==",
+  "dgSpecHash": "1uRnPJQ6KxwsFdmXQhDJg6oZx/p16qXUiXK6E9kB74L6h4sm8LPEKLdVcTg+7Eq/kjF5w2/DQALTk7K23VEv+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\kerys\\OneDrive\\Documents\\B1 EPSI\\Csharp\\TP-Ex1POO\\app.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kerys\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+  ],
   "logs": []
 }

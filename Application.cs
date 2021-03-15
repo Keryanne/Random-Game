@@ -2,100 +2,61 @@
 
 public class Application
 {
-    public static Player m_j1 = new Player();
-    public static Bot b1 = new Bot();
+    ConsoleManager console = new ConsoleManager();
 
-    public void fonctionPrincipale()
+    public void fonctionPrincipale ()
     {
         //DEBUT de votre programme
-        while (true)
-        {
-            if (tirageAuSort() == m_j1.pseudo)
-            {
-                Console.WriteLine(m_j1.pseudo + " joue");
-                if (TourPlayer())
-                {
-                    break;
-                }
-            }
-            else
-            {
-                Console.WriteLine(b1.nomBot + " joue");
-                if (TourBot())
-                {
-                    break;
-                }
-            }
-        }
+        console.println("Quel est votre pseudo ?");
+        string username = Utilisateur.saisirTexte();
+        Player p1 = new Player(username);
 
+        int nbBotsVaincus = 0;
+        do {	
+            Bot b1 = new Bot((nbBotsVaincus + 1) * 2);
+            p1.rest();
+            fight(p1, b1);
+            if (p1.isAlive()) {
+                nbBotsVaincus++;
+            }
+        } while (p1.isAlive());
+        console.println($"Vous avez vaincu {nbBotsVaincus} avant de succomber");
         //FIN de votre programme
     }
 
     //DECLAREZ VOS FONCTIONS EN DESSOUS DE CETTE LIGNE
-
-    string tirageAuSort()
-    {
-        var random = new Random();
-        int choix = random.Next(1, 3);
-
-        if (choix == 1)
-        {
-            return m_j1.pseudo;
+	
+    void fight(Player p1, Bot b1) {
+        console.println("Lancer les dés pour savoir qui attaque en premier");
+        int dicesValue = p1.rollDices();
+        while (b1.isAlive() && p1.isAlive()) {
+            if (dicesValue % 2 == 0) {
+                p1.chooseNextMove(b1);
+                b1.attackPlayer(p1);
+            } else {
+                b1.attackPlayer(p1);
+                p1.chooseNextMove(b1);
+            }
+			
+            b1.display();
+            p1.display();
         }
-        else
-        {
-            return b1.nomBot;
+		
+        if (p1.isAlive()) {
+            console.println("Vous avez gagné! GG!");
+            p1.didWinBot(b1);
+            if (console.askYesNo("Une nouvelle arme est disponible. Voulez-vous la récupérer ?")) {
+                p1.pickUpWeapon(new Weapon("Bombe banane", 20, 50));
+            }
+        } else {
+            console.println("Vous avez été vaincu par le Bot :(");
         }
     }
+	
+	
 
-    int lancerDes(string _nomJoueur)
-    {
-        var random = new Random();
-        int de = random.Next(1, 7) + random.Next(1, 7);
-
-        Console.WriteLine($"{_nomJoueur} a lancé les Dés et a obtenu {de}");
-        return de;
-    }
-
-    bool TourPlayer()
-    {
-        Console.WriteLine($"{m_j1.pseudo}, appuyez sur 'Entrée' pour lancer les dés");
-        string entre = Utilisateur.saisirTexte();
-
-        int hitStrength = lancerDes(m_j1.pseudo);
-        Console.WriteLine($"{m_j1.pseudo} lance les dés... {hitStrength}");
-        Console.WriteLine($"{m_j1.pseudo} assène un coup sur le bot avec une force de {hitStrength}");
-        b1.santeBot = b1.santeBot - hitStrength;
-        Console.WriteLine($"{m_j1.pseudo} - {m_j1.santeJoueur}");
-        Console.WriteLine($"{b1.nomBot} - {b1.santeBot}");
-
-        if (b1.santeBot <= 0)
-        {
-            Console.WriteLine(m_j1.pseudo + " a gagné");
-            return true;
-        }
-
-        return false;
-    }
-
-    bool TourBot()
-    {
-        int hitStrength = lancerDes(b1.nomBot);
-        Console.WriteLine($"{b1.nomBot} lance les dés... {hitStrength}");
-        Console.WriteLine($"{b1.nomBot} assène un coup sur le joueur avec une force de {hitStrength}");
-        m_j1.santeJoueur = m_j1.santeJoueur - hitStrength;
-        Console.WriteLine($"{m_j1.pseudo} - {m_j1.santeJoueur}");
-        Console.WriteLine($"{b1.nomBot} - {b1.santeBot}");
-
-        if (m_j1.santeJoueur <= 0)
-        {
-            Console.WriteLine(b1.nomBot + " a gagné");
-            return true;
-        }
-
-        return false;
-    }
-
+	
+	
     /* EXEMPLES DE PROCEDURES ET FONCTIONS :
     
         void uneProcedure(int param1, int param2)
